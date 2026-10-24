@@ -1,5 +1,6 @@
 {
   "interval": "2026-10-24T14:00/16:00",
+  "window": "2:00pm to 4:00pm",
   "claimsAdjusters": 10,
   "salesAgents": 8,
   "salesAgentsTrainedForClaims": 6,

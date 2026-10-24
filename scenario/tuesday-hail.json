@@ -1,0 +1,233 @@
+{
+  "id": "tuesday-2pm",
+  "when": "Tuesday 2:00pm local",
+  "carrier": "Northbridge Mutual",
+  "line": "Property claims",
+  "steady": {
+    "title": "Ordinary property afternoon",
+    "summary": "Volume, wait, and satisfaction are inside the usual band. Run the storm simulation to scan a surge hour and mark the desk code red."
+  },
+  "surge": {
+    "title": "Storm claims are the hour",
+    "summary": "Transcripts scanned this hour are led by hail, roof, and wind losses. Abandonment is 18%. The phone tree is still offering sales, and 18 callers have mentioned an injury or a lawyer."
+  },
+  "metrics": [
+    {
+      "id": "offered",
+      "label": "Offered calls",
+      "steady": "70",
+      "surge": "220",
+      "steadyNumber": 70,
+      "surgeNumber": 220,
+      "detail": "A normal property hour is 70 offered calls."
+    },
+    {
+      "id": "abandonment",
+      "label": "Abandonment",
+      "steady": "5%",
+      "surge": "18%",
+      "steadyNumber": 5,
+      "surgeNumber": 18,
+      "detail": "Callers are hanging up before an adjuster answers."
+    },
+    {
+      "id": "aht",
+      "label": "Average handle time",
+      "steady": "6m 40s",
+      "surge": "11m 20s",
+      "detail": "The live calls that remain are full storm intakes, so the average gets longer."
+    },
+    {
+      "id": "containment",
+      "label": "Containment",
+      "steady": "42%",
+      "surge": "15%",
+      "detail": "The phone tree has no storm path, so simple claims fall through to a person."
+    },
+    {
+      "id": "fcr",
+      "label": "First-call resolution",
+      "steady": "74%",
+      "surge": "61%",
+      "detail": "People call back because the first conversation did not finish the claim."
+    },
+    {
+      "id": "csat",
+      "label": "CSAT",
+      "steady": "4.4",
+      "surge": "3.6",
+      "detail": "Wait time, repeating the loss, and a sales offer during a claim."
+    },
+    {
+      "id": "service",
+      "label": "Service level",
+      "steady": "82%",
+      "surge": "34%",
+      "detail": "Share of calls answered inside the target."
+    },
+    {
+      "id": "occupancy",
+      "label": "Occupancy",
+      "steady": "78%",
+      "surge": "96%",
+      "detail": "Adjusters are saturated. Sales agents are still on a quiet queue."
+    }
+  ],
+  "themes": [
+    {
+      "id": "storm",
+      "reason": "File a storm claim",
+      "calls": 140,
+      "share": "64%",
+      "sample": "Hail, roof, wind, and water, with no injury mentioned."
+    },
+    {
+      "id": "sales",
+      "reason": "Sales",
+      "calls": 40,
+      "share": "18%",
+      "sample": "New quotes and second policies, still reaching a person."
+    },
+    {
+      "id": "upsell",
+      "reason": "Upsell during a claim",
+      "calls": 22,
+      "share": "10%",
+      "sample": "Add flood or raise coverage while the loss is being reported."
+    },
+    {
+      "id": "injury",
+      "reason": "Injury or attorney",
+      "calls": 18,
+      "share": "8%",
+      "sample": "Pain, a passenger hurt, or a lawyer who will call."
+    }
+  ],
+  "steadyThemesNote": "No theme is dominating. Billing, proof of insurance, and a single parking-lot claim.",
+  "transcripts": {
+    "steady": [
+      {
+        "time": "1:12p",
+        "quote": "I need a declaration page for my mortgage company.",
+        "theme": "Policy service"
+      },
+      {
+        "time": "1:26p",
+        "quote": "Can someone explain the renewal premium?",
+        "theme": "Billing"
+      },
+      {
+        "time": "1:41p",
+        "quote": "A branch scraped the car in the grocery lot.",
+        "theme": "Simple claim"
+      }
+    ],
+    "surge": [
+      {
+        "time": "2:04p",
+        "quote": "The hail went through the skylight and water is coming into the bedroom.",
+        "theme": "File a storm claim"
+      },
+      {
+        "time": "2:07p",
+        "quote": "I was in the car when the tree came down and my neck is hurting.",
+        "theme": "Injury or attorney"
+      },
+      {
+        "time": "2:11p",
+        "quote": "I've been holding for twenty minutes. I just need to start the claim.",
+        "theme": "File a storm claim"
+      },
+      {
+        "time": "2:14p",
+        "quote": "My sister said I should have a lawyer call you before I say anything.",
+        "theme": "Injury or attorney"
+      },
+      {
+        "time": "2:18p",
+        "quote": "While I have you, can you add flood coverage to the policy?",
+        "theme": "Upsell during a claim"
+      },
+      {
+        "time": "2:22p",
+        "quote": "Hi, I wanted a quote on a second car.",
+        "theme": "Sales"
+      }
+    ]
+  },
+  "samples": [
+    {
+      "id": "hail",
+      "label": "Hail through the skylight",
+      "text": "The hail went through the skylight and water is coming into the bedroom.",
+      "liveQueue": "adjuster_queue",
+      "proposedQueue": "self_service_fnol"
+    },
+    {
+      "id": "injury",
+      "label": "Neck injury",
+      "text": "I was in the car when the tree came down and my neck is hurting.",
+      "liveQueue": "adjuster_queue",
+      "proposedQueue": "licensed_queue"
+    },
+    {
+      "id": "both",
+      "label": "Hail and a neck injury",
+      "text": "The hail broke the skylight and my neck is hurting.",
+      "liveQueue": "adjuster_queue",
+      "proposedQueue": "licensed_queue"
+    },
+    {
+      "id": "lawyer",
+      "label": "A lawyer will call",
+      "text": "My sister said I should have a lawyer call you before I say anything.",
+      "liveQueue": "adjuster_queue",
+      "proposedQueue": "licensed_queue"
+    },
+    {
+      "id": "sales",
+      "label": "A quote on a second car",
+      "text": "Hi, I wanted a quote on a second car.",
+      "liveQueue": "sales_queue",
+      "proposedQueue": "sales_queue"
+    },
+    {
+      "id": "billing",
+      "label": "Declaration page",
+      "text": "I need a declaration page for my mortgage company.",
+      "liveQueue": "billing_queue",
+      "proposedQueue": "billing_queue"
+    }
+  ],
+  "scoreGuidance": [
+    {
+      "metric": "Containment",
+      "expectation": "Containment should rise once simple storm claims finish in self-service. A callback is not containment."
+    },
+    {
+      "metric": "Abandonment",
+      "expectation": "Abandonment should fall after the claim-trained sales agents move onto the claims queue."
+    },
+    {
+      "metric": "Average handle time",
+      "expectation": "Blended handle time on the remaining live calls will stay long, because the short calls left the queue. Do not add seats to push that number down."
+    },
+    {
+      "metric": "First-call resolution",
+      "expectation": "Do not set a first-call-resolution target on injury calls. A handoff to a licensed person is the correct result."
+    },
+    {
+      "metric": "CSAT",
+      "expectation": "The sandbox does not rewrite CSAT. The score moves when the wait shortens and the sales offer stops during a claim."
+    }
+  ],
+  "staffing": {
+    "liveClaimSeats": 8,
+    "rejectedSeatCount": 14,
+    "onCallWindow": "4:00pm to 6:00pm",
+    "overtimeWindow": "tomorrow 8:00am to 10:00am",
+    "moveWindow": "2:00pm to 4:00pm",
+    "abandonmentTarget": 5,
+    "qualityCalls": ["the 2:07pm neck-injury call", "the 2:14pm lawyer call"]
+  }
+}

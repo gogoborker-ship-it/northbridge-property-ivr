@@ -13,3 +13,4 @@ jobs:
         with:
           node-version: 22
       - run: node ivr/check-flow.mjs
+      - run: node ivr/check-proposal.mjs

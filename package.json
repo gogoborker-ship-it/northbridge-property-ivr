@@ -1,10 +1,25 @@
 {
-  "name": "northbridge-property-ivr",
+  "name": "northbridge-claims-demo",
   "private": true,
   "type": "module",
-  "description": "Live property-claims phone flow for Northbridge Mutual.",
+  "description": "Northbridge Mutual claims desk for the Tuesday hail hour, with the phone flow and three Cursor SDK agents.",
+  "engines": {
+    "node": ">=22.13.0"
+  },
   "scripts": {
-    "route": "node ivr/route-call.mjs",
-    "check": "node ivr/check-flow.mjs"
+    "check": "tsc --noEmit",
+    "check:flow": "node ivr/check-flow.mjs && node ivr/check-proposal.mjs",
+    "validate": "agent-sdk validate --dir .",
+    "dev:agent": "agent-sdk dev --mode single --port 4471",
+    "dev:web": "npm run dev --prefix web",
+    "build:web": "npm run build --prefix web"
+  },
+  "dependencies": {
+    "@grok/agent-sdk": "^0.2.28",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "typescript": "6.0.3"
   }
 }
