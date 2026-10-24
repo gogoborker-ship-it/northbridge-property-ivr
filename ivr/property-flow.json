@@ -1,8 +1,13 @@
 {
   "flowId": "property-claims-ivr",
-  "version": "2026.10.24.1",
-  "description": "Live property IVR. Callers who report a new loss reach an adjuster. Sales and upsell prompts stay on.",
+  "version": "2026.10.24.2-surge",
+  "description": "Surge patch. Simple storm losses can finish in self-service. Injury and attorney language goes to a licensed queue. Sales prompts are paused until 6pm.",
   "entry": "hours",
+  "surge": {
+    "active": true,
+    "reason": "hail",
+    "expires": "2026-10-24T18:00"
+  },
   "nodes": {
     "hours": {
       "type": "hours",
@@ -12,6 +17,16 @@
     "main_menu": {
       "type": "intent_router",
       "routes": [
+        {
+          "intent": "injury_or_attorney",
+          "queue": "licensed_queue",
+          "match": ["injury", "hurt", "neck", "lawyer", "attorney"]
+        },
+        {
+          "intent": "storm_claim",
+          "queue": "self_service_fnol",
+          "match": ["hail", "roof", "wind", "water", "storm"]
+        },
         { "intent": "new_claim", "queue": "adjuster_queue" },
         { "intent": "existing_claim", "queue": "adjuster_queue" },
         { "intent": "billing", "queue": "billing_queue" },
@@ -26,14 +41,16 @@
   },
   "prompts": {
     "salesOffer": {
-      "enabled": true,
-      "text": "Before we finish, would you like a quote on additional coverage?"
+      "enabled": false,
+      "text": "Before we finish, would you like a quote on additional coverage?",
+      "pausedUntil": "2026-10-24T18:00"
     }
   },
   "queues": {
-    "adjuster_queue": "All new property losses, including storm claims",
-    "sales_queue": "New business and coverage changes",
-    "billing_queue": "Premium and documents",
-    "licensed_queue": "Unused. Injury and attorney calls are not separated."
+    "self_service_fnol": "Simple hail, roof, and wind claims with no injury language",
+    "licensed_queue": "Injury, attorney, and fraud language. A licensed person must take these.",
+    "adjuster_queue": "Other property losses",
+    "sales_queue": "New business and coverage changes. Offer is paused during the surge.",
+    "billing_queue": "Premium and documents"
   }
 }
