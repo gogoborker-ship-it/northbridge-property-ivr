@@ -1,0 +1,10 @@
+{
+  "name": "northbridge-property-ivr",
+  "private": true,
+  "type": "module",
+  "description": "Live property-claims phone flow for Northbridge Mutual.",
+  "scripts": {
+    "route": "node ivr/route-call.mjs",
+    "check": "node ivr/check-flow.mjs"
+  }
+}

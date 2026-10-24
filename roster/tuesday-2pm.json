@@ -1,0 +1,8 @@
+{
+  "interval": "2026-10-24T14:00/16:00",
+  "claimsAdjusters": 10,
+  "salesAgents": 8,
+  "salesAgentsTrainedForClaims": 6,
+  "onCallClaims": 4,
+  "overtimeAuthorized": false
+}

@@ -1,0 +1,39 @@
+{
+  "flowId": "property-claims-ivr",
+  "version": "2026.10.24.1",
+  "description": "Live property IVR. Callers who report a new loss reach an adjuster. Sales and upsell prompts stay on.",
+  "entry": "hours",
+  "nodes": {
+    "hours": {
+      "type": "hours",
+      "open": "main_menu",
+      "closed": "after_hours"
+    },
+    "main_menu": {
+      "type": "intent_router",
+      "routes": [
+        { "intent": "new_claim", "queue": "adjuster_queue" },
+        { "intent": "existing_claim", "queue": "adjuster_queue" },
+        { "intent": "billing", "queue": "billing_queue" },
+        { "intent": "sales", "queue": "sales_queue" },
+        { "intent": "upsell", "queue": "sales_queue" }
+      ]
+    },
+    "after_hours": {
+      "type": "message",
+      "next": "voicemail"
+    }
+  },
+  "prompts": {
+    "salesOffer": {
+      "enabled": true,
+      "text": "Before we finish, would you like a quote on additional coverage?"
+    }
+  },
+  "queues": {
+    "adjuster_queue": "All new property losses, including storm claims",
+    "sales_queue": "New business and coverage changes",
+    "billing_queue": "Premium and documents",
+    "licensed_queue": "Unused. Injury and attorney calls are not separated."
+  }
+}
